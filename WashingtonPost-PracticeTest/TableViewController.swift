@@ -10,17 +10,40 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    var tableData = Array < String >()
-    var api = RemoteAPI()
+    var items : NSMutableArray = []
+    var records = [Record]()
+    var titles = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+        setUpNetworkCall()
+        tableView.delegate = self
+        tableView.dataSource = self
+        }
+    
+    func setUpNetworkCall () {
+        let url = NSURL(string: "http://www.washingtonpost.com/wp-srv/simulation/simulation_test.json")
+        
+        if let JSONData = NSData(contentsOfURL: url!) {
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(JSONData, options: []) as? NSDictionary {
+                    
+                    if let postsArray = jsonResult["posts"] as? [NSDictionary] {
+                        print(postsArray)
+                        for post in postsArray {
+                            records.append(Record(json: post))
+                        }
+                    }
+                    //print(jsonResult)
+                    }
+                
+                }
+             catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,19 +53,21 @@ class TableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
+        print(records.count)
+        return records.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = tableData[indexPath.row]
+        cell.textLabel?.text = records[indexPath.row].title
+        //cell.textLabel?.text = titles[indexPath.row]
+        cell.detailTextLabel?.text = records[indexPath.row].date
         
         return cell
 
@@ -94,72 +119,13 @@ class TableViewController: UITableViewController {
 
 }
 
-class RemoteAPI {
+class Record {
     
-    func getData(completionHandler: ((NSArray!, NSError!) -> Void)!) -> Void {
-        let url = NSURL(string: "http://www.washingtonpost.com/wp-srv/simulation/simulation_test.json")!
-        let ses = NSURLSession.sharedSession()
-        let task = ses.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
-            
-            do {
-                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
-                    print(jsonResult)
-                    return completionHandler(jsonResult["results"] as! [NSDictionary], nil)
-
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            
-            
-        })
-        task.resume()
+    var title: String?
+    var date: String?
+    
+    init(json: NSDictionary) {
+        self.title = json["title"] as? String
+        self.date = json["date"] as? String
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
