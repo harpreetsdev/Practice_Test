@@ -10,9 +10,11 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
+    var tableData = Array < String >()
+    var api = RemoteAPI()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,20 +35,18 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tableData.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
-        // Configure the cell...
-
+        cell.textLabel?.text = tableData[indexPath.row]
+        
         return cell
-    }
-    */
 
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -93,3 +93,73 @@ class TableViewController: UITableViewController {
     */
 
 }
+
+class RemoteAPI {
+    
+    func getData(completionHandler: ((NSArray!, NSError!) -> Void)!) -> Void {
+        let url = NSURL(string: "http://www.washingtonpost.com/wp-srv/simulation/simulation_test.json")!
+        let ses = NSURLSession.sharedSession()
+        let task = ses.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                    print(jsonResult)
+                    return completionHandler(jsonResult["results"] as! [NSDictionary], nil)
+
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+            
+            
+        })
+        task.resume()
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
