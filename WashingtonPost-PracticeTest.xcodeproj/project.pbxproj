@@ -13,6 +13,7 @@
 		10A0E0291C875BA600E73264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A0E0281C875BA600E73264 /* Assets.xcassets */; };
 		10A0E02C1C875BA600E73264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0E02A1C875BA600E73264 /* LaunchScreen.storyboard */; };
 		10A0E0371C875BA600E73264 /* WashingtonPost_PracticeTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0E0361C875BA600E73264 /* WashingtonPost_PracticeTestTests.swift */; };
+		10A0E0421C875C9700E73264 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0E0411C875C9700E73264 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		10A0E0321C875BA600E73264 /* WashingtonPost-PracticeTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WashingtonPost-PracticeTestTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0E0361C875BA600E73264 /* WashingtonPost_PracticeTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashingtonPost_PracticeTestTests.swift; sourceTree = "<group>"; };
 		10A0E0381C875BA600E73264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10A0E0411C875C9700E73264 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		10A0E0201C875BA600E73264 /* WashingtonPost-PracticeTest */ = {
 			isa = PBXGroup;
 			children = (
+				10A0E0411C875C9700E73264 /* TableViewController.swift */,
 				10A0E0211C875BA600E73264 /* AppDelegate.swift */,
 				10A0E0231C875BA600E73264 /* ViewController.swift */,
 				10A0E0251C875BA600E73264 /* Main.storyboard */,
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A0E0241C875BA600E73264 /* ViewController.swift in Sources */,
+				10A0E0421C875C9700E73264 /* TableViewController.swift in Sources */,
 				10A0E0221C875BA600E73264 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
