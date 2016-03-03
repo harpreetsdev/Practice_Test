@@ -15,12 +15,11 @@ class TableViewControllerTests: XCTestCase {
     var viewController = TableViewController()
     override func setUp() {
         super.setUp()
-//        self.viewController = UIStoryboard(name:"Main", bundle: nil).instantiateViewControllerWithIdentifier("RecordTableViewController") as! TableViewController
         
     }
     
     func testViewControllerExists() {
-        //XCTAssertNotNil(viewController.view, "View Controller's view cannot be nil")
+        XCTAssertNotNil(viewController.view, "View Controller's view cannot be nil")
     }
 
     override func tearDown() {
