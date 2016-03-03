@@ -11,17 +11,23 @@ import UIKit
 class DetailViewController: UIViewController {
     let tableViewController = TableViewController()
     @IBOutlet weak var descriptionTextView: UITextView?
+    @IBOutlet weak var idLabel: UILabel?
+    
+    var contentText:String?
+    var idLabelText:String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        //descriptionTextView.backgroundColor = UIColor.blueColor()
-        setUpOutlets()// Do any additional setup after loading the view.
+        setUpOutlets()
         
     }
     
     func setUpOutlets() {
-    //let indexPath = tableViewController.tableView.indexPathForSelectedRow
-     //descriptionTextView.text = "SOME TEXT"
+        descriptionTextView?.text = contentText
+        idLabel!.text = idLabelText
+        view.addSubview(descriptionTextView!)
+        view.addSubview(idLabel!)
+
     }
     @IBAction func backBTNTap(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)

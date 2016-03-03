@@ -14,11 +14,13 @@ class TableViewController: UITableViewController {
     var records = [Record]()
     var titles = [String]()
     var detailVC : DetailViewController?
+    var detailSegue: UIStoryboardSegue?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNetworkCall()
         tableView.delegate = self
         tableView.dataSource = self
+        
         }
     
     func setUpNetworkCall () {
@@ -57,7 +59,6 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(records.count)
         return records.count
     }
 
@@ -71,32 +72,7 @@ class TableViewController: UITableViewController {
         return cell
 
     }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        guard let selectedRecordContent = records[indexPath.row].descText else {
-          return
-        }
-        if let detailVC = self.detailVC {
-          detailVC.descriptionTextView!.text = selectedRecordContent
-        }
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let detailVC = storyboard.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
-//        guard let selectedRecordContent = records[indexPath.row].descText else {
-//          return
-//        }
-//        print("SELECTED CONTENT ==\(selectedRecordContent)")
-//        detailVC.descriptionTextView = UITextView()
-//        detailVC.descriptionTextView?.textColor = UIColor.blackColor()
-//
-//        detailVC.descriptionTextView?.text = selectedRecordContent
-//        if let descriptionTextView = detailVC.descriptionTextView {
-//            
-//            descriptionTextView.text = "SOME RENDOM TEXT"
-//        }
-        //self.presentViewController(detailVC, animated: true, completion: nil)
-        print("Cell Tapped")
-    }
-    /*
+/*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
@@ -131,43 +107,29 @@ class TableViewController: UITableViewController {
     }
     */
 
- /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toDetail" {
+        if segue.identifier == " toRecordDetail" {
             
             let indexPath = tableView.indexPathForSelectedRow
-            //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let detailVC = segue.destinationViewController as! DetailViewController
+            detailVC = segue.destinationViewController as? DetailViewController
             guard let selectedRecordContent = records[indexPath!.row].descText else {
                 return
             }
-            print("SELECTED CONTENT ==\(selectedRecordContent)")
-            detailVC.descriptionTextView = UITextView()
-            detailVC.descriptionTextView?.textColor = UIColor.blackColor()
             
-            detailVC.descriptionTextView?.text = "SOME RANDOM TEXT"
-//            let detailVC =  segue.destinationViewController as! DetailViewController
-//            
-//            let indexPath = tableView.indexPathForSelectedRow
-            print(indexPath?.row)
-            //print(records[indexPath!.row].descText)
-//            if let trimmedText = records[(indexPath?.row)!].descText?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()) {
-                //print("TRIMMED TEXT == \(trimmedText)")
-                if let descriptionTextView = detailVC.descriptionTextView {
-                    descriptionTextView.text = records[(indexPath?.row)!].descText }
-//            }
-//            detailVC.descriptionText.text = records[indexPath!.row].descText?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            //navigationController?.presentViewController(detailVC, animated: true, completion: nil)
-            // Pass the selected object to the new view controller.
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                detailVC.descriptionText.textColor = UIColor.blueColor()//records[indexPath.row].descText
-//            }
+            guard let selectedRecordID = records[indexPath!.row].recID else {
+                return
+            }
+            // Passing text field and ID label data through stroyboard seque.
+            self.detailVC?.contentText = selectedRecordContent
+            self.detailVC?.idLabelText = selectedRecordID.description
     }
     }
-*/
+
 }
 
 class Record {
@@ -175,10 +137,12 @@ class Record {
     var title: String?
     var date: String?
     var descText: String?
+    var recID: Int?
     
     init(json: NSDictionary) {
         self.title = json["title"] as? String
         self.date = json["date"] as? String
         self.descText = json["content"] as? String
+        self.recID = json["id"] as? Int
     }
 }
