@@ -8,7 +8,7 @@
 
 import XCTest
 import UIKit
-@testable import WashingtonPost_PracticeTest
+//import WashingtonPost_PracticeTest
 
 class TableViewControllerTests: XCTestCase {
     
