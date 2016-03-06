@@ -95,6 +95,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103E64FA1C8C8F53005DE12B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				103E64F21C8C5B45005DE12B /* Record.swift */,
+				103E64F61C8C5C6F005DE12B /* DataModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		103E64FB1C8C8F78005DE12B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				10A0E0231C875BA600E73264 /* ViewController.swift */,
+				10A0E0411C875C9700E73264 /* TableViewController.swift */,
+				10A0E0431C879A0600E73264 /* DetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		103E64FC1C8C8F8C005DE12B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10A0E02A1C875BA600E73264 /* LaunchScreen.storyboard */,
+				10A0E0251C875BA600E73264 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		103E64FD1C8C8FFF005DE12B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10A0E0211C875BA600E73264 /* AppDelegate.swift */,
+				10A0E02D1C875BA600E73264 /* Info.plist */,
+				10A0E0281C875BA600E73264 /* Assets.xcassets */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		10A0E0151C875BA600E73264 = {
 			isa = PBXGroup;
 			children = (
@@ -118,16 +156,10 @@
 		10A0E0201C875BA600E73264 /* WashingtonPost-PracticeTest */ = {
 			isa = PBXGroup;
 			children = (
-				10A0E0411C875C9700E73264 /* TableViewController.swift */,
-				10A0E0211C875BA600E73264 /* AppDelegate.swift */,
-				10A0E0231C875BA600E73264 /* ViewController.swift */,
-				10A0E0251C875BA600E73264 /* Main.storyboard */,
-				10A0E0281C875BA600E73264 /* Assets.xcassets */,
-				10A0E02A1C875BA600E73264 /* LaunchScreen.storyboard */,
-				10A0E02D1C875BA600E73264 /* Info.plist */,
-				10A0E0431C879A0600E73264 /* DetailViewController.swift */,
-				103E64F21C8C5B45005DE12B /* Record.swift */,
-				103E64F61C8C5C6F005DE12B /* DataModel.swift */,
+				103E64FA1C8C8F53005DE12B /* Model */,
+				103E64FC1C8C8F8C005DE12B /* Views */,
+				103E64FB1C8C8F78005DE12B /* Controllers */,
+				103E64FD1C8C8FFF005DE12B /* Supporting Files */,
 			);
 			path = "WashingtonPost-PracticeTest";
 			sourceTree = "<group>";
