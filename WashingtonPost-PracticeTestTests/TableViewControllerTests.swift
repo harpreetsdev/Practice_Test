@@ -31,7 +31,7 @@ class TableViewControllerTests: XCTestCase {
     func testNetworkActivitySpeed() {
         // This is an example of a performance test case.
         self.measureBlock {
-            self.viewController.setUpNetworkCall()
+            DataModel.sharedInstance.setUpNetworkCall()
         }
     }
     
