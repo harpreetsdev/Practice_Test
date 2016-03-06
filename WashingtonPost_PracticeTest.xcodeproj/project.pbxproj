@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103E64F31C8C5B45005DE12B /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E64F21C8C5B45005DE12B /* Record.swift */; };
+		103E64F71C8C5C6F005DE12B /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E64F61C8C5C6F005DE12B /* DataModel.swift */; };
+		103E64F81C8C777A005DE12B /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E64F21C8C5B45005DE12B /* Record.swift */; };
+		103E64F91C8C77AD005DE12B /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103E64F61C8C5C6F005DE12B /* DataModel.swift */; };
 		10A0E0221C875BA600E73264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0E0211C875BA600E73264 /* AppDelegate.swift */; };
 		10A0E0241C875BA600E73264 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A0E0231C875BA600E73264 /* ViewController.swift */; };
 		10A0E0271C875BA600E73264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A0E0251C875BA600E73264 /* Main.storyboard */; };
@@ -47,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		103E64F21C8C5B45005DE12B /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		103E64F61C8C5C6F005DE12B /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		10A0E01E1C875BA600E73264 /* WashingtonPost_PracticeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WashingtonPost_PracticeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A0E0211C875BA600E73264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10A0E0231C875BA600E73264 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +126,8 @@
 				10A0E02A1C875BA600E73264 /* LaunchScreen.storyboard */,
 				10A0E02D1C875BA600E73264 /* Info.plist */,
 				10A0E0431C879A0600E73264 /* DetailViewController.swift */,
+				103E64F21C8C5B45005DE12B /* Record.swift */,
+				103E64F61C8C5C6F005DE12B /* DataModel.swift */,
 			);
 			path = "WashingtonPost-PracticeTest";
 			sourceTree = "<group>";
@@ -266,8 +274,10 @@
 			files = (
 				10A0E0241C875BA600E73264 /* ViewController.swift in Sources */,
 				10A0E0421C875C9700E73264 /* TableViewController.swift in Sources */,
+				103E64F31C8C5B45005DE12B /* Record.swift in Sources */,
 				10A0E0221C875BA600E73264 /* AppDelegate.swift in Sources */,
 				10A0E0441C879A0600E73264 /* DetailViewController.swift in Sources */,
+				103E64F71C8C5C6F005DE12B /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,8 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				103E64F91C8C77AD005DE12B /* DataModel.swift in Sources */,
 				10A0E05A1C87D7FA00E73264 /* DetailViewController.swift in Sources */,
 				10A0E0591C87D7B300E73264 /* TableViewController.swift in Sources */,
+				103E64F81C8C777A005DE12B /* Record.swift in Sources */,
 				10A0E0581C87D7A900E73264 /* WashingtonPost_PracticeTest.app in Sources */,
 				10A0E0571C87D79400E73264 /* WashingtonPost_PracticeTest.xctest in Sources */,
 				10A0E0561C87D77000E73264 /* TableViewControllerTests.swift in Sources */,
@@ -501,6 +513,7 @@
 				10A0E03D1C875BA600E73264 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10A0E03E1C875BA600E73264 /* Build configuration list for PBXNativeTarget "WashingtonPost_PracticeTestTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +522,7 @@
 				10A0E0401C875BA600E73264 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		10A0E04F1C87C89A00E73264 /* Build configuration list for PBXNativeTarget "TestLibrary" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +531,7 @@
 				10A0E0511C87C89A00E73264 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

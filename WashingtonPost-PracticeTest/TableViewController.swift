@@ -11,42 +11,17 @@ import UIKit
 class TableViewController: UITableViewController {
 
     var items : NSMutableArray = []
-    var records = [Record]()
     var titles = [String]()
     var detailVC : DetailViewController?
     var detailSegue: UIStoryboardSegue?
+    let dataModel = DataModel.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpNetworkCall()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        }
-    
-    func setUpNetworkCall () {
-        let url = NSURL(string: "http://www.washingtonpost.com/wp-srv/simulation/simulation_test.json")
-        
-        if let JSONData = NSData(contentsOfURL: url!) {
-            
-            do {
-                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(JSONData, options: []) as? NSDictionary {
-                    
-                    if let postsArray = jsonResult["posts"] as? [NSDictionary] {
-                        //print(postsArray)
-                        for post in postsArray {
-                            records.append(Record(json: post))
-                        }
-                    }
-                    //print(jsonResult)
-                    }
-                
-                }
-             catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        }
-}
 
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,15 +34,15 @@ class TableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return records.count
+        return DataModel.sharedInstance.records.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = records[indexPath.row].title
-        cell.detailTextLabel?.text = records[indexPath.row].date
+        cell.textLabel?.text = DataModel.sharedInstance.records[indexPath.row].title // Pulling network response from Singleton Data model class.
+        cell.detailTextLabel?.text = DataModel.sharedInstance.records[indexPath.row].date
         
         return cell
 
@@ -111,17 +86,17 @@ class TableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    
+  
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == " toRecordDetail" {
             
             let indexPath = tableView.indexPathForSelectedRow
             detailVC = segue.destinationViewController as? DetailViewController
-            guard let selectedRecordContent = records[indexPath!.row].descText else {
+            guard let selectedRecordContent = DataModel.sharedInstance.records[indexPath!.row].descText else {
                 return
             }
             
-            guard let selectedRecordID = records[indexPath!.row].recID else {
+            guard let selectedRecordID = DataModel.sharedInstance.records[indexPath!.row].recID else {
                 return
             }
             // Passing text field and ID label data through stroyboard seque.
@@ -132,17 +107,3 @@ class TableViewController: UITableViewController {
 
 }
 
-class Record {
-    
-    var title: String?
-    var date: String?
-    var descText: String?
-    var recID: Int?
-    
-    init(json: NSDictionary) {
-        self.title = json["title"] as? String
-        self.date = json["date"] as? String
-        self.descText = json["content"] as? String
-        self.recID = json["id"] as? Int
-    }
-}
